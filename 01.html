@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<script>
+
+
+
+const contarString = (string = "") => 
+(!string) 
+ ? console.warn("String vacía")
+ : console.info(string.length);
+
+contarString("");
+contarString("Hola Mundo");
+
+
+const cortarCadenta = (string = "", longitud = undefined) => 
+    (!string) 
+    ? console.warn("String vacía")
+        : (longitud === undefined)
+        ? console.warn("Sin longitud")
+        : console.info(string.slice(0, longitud));
+
+cortarCadenta();
+cortarCadenta("Hola Mundo");
+cortarCadenta("Hola Mundo", 8);
+
+
+const stringToArray = (string = "", separador = undefined) =>
+    (!string)
+    ? console.warn("String vacía")
+    : (separador === undefined)
+        ? console.warn("Separador indefinido")
+        : console.info(string.split(separador))
+
+stringToArray();
+stringToArray("hola que tal");
+stringToArray("hola que tal", " ");
+
+
+
+const repetirString = (string = null, multiplidador = undefined) =>
+    (!string)
+    ? console.warn("String vacía")
+    : (multiplidador === undefined) 
+        ? console.warn("Multiplicador indefinido")
+        : console.info(string.repeat(multiplidador))
+
+repetirString();
+repetirString("Hola Mundo");
+repetirString("Hola Mundo ", 5);
+
+
+
+</script>
+    
+
+
+
+</body>
+</html>
