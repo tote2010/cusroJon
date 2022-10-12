@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+/*
+5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+*/
+
+const invertirString = (string = "") =>
+    (!string)
+    ? console.warn("String vacía")
+    : console.info(string.split("").reverse().join(""));
+
+invertirString();
+invertirString("Hola Mundo");
+
+
+
+
+
+const contarPalabraRepetida = (string = "", stringABuscar = "") => {
+    if(!string) return console.warn("String vacío");
+    if(!stringABuscar) return console.warn("Sin string a buscar");
+    let arr = string.split(" ");
+    let contador = 0;
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === stringABuscar){
+            contador++;
+        }
+    }
+    return console.info(`La palabra ${stringABuscar} aprarece ${contador} veces.`);
+}
+    
+contarPalabraRepetida();
+contarPalabraRepetida("Hola mundo adiós mundo");
+contarPalabraRepetida("Hola mundo adiós mundo","mundo");
+
+
+
+
+const validarPolidromo = (string = "") => {
+    if(!string) return console.warn("String vacío");
+    if(string.toLowerCase().split("").reverse().join("") === string.toLowerCase()) {
+        return console.info(true);
+    } else {
+       return console.info(false); 
+    }        
+}
+    
+validarPolidromo();
+validarPolidromo("Salsa");
+validarPolidromo("Salas");
+
+
+
+/*
+const eliminarPatron = (string = "", patron = "") => {
+    if(!string) return console.warn("String vacío");
+    if(!patron) return console.warn("Patrón no ingresado");
+    return console.info(string.replaceAll(patron, ""));
+}
+*/
+const eliminarPatron = (string = "", patron = "") =>
+    (!string)
+    ? console.warn("String vacío")
+    : (!patron)
+        ? console.warn("Patrón no ingresado")
+        : console.info(string.replaceAll(patron, ""))
+
+eliminarPatron();
+eliminarPatron("", "xyz");
+eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5");
+eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+
+
+
+
+</script>    
+</body>
+</html>
