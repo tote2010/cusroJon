@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+            /*
+            12) Programa una función que determine si un número es primo (aquel que solo es 
+            divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+            13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) 
+            devolverá Impar.
+            14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, 
+            pe. miFuncion(0,"C") devolverá 32°F.
+            */
+
+            const esNumeroPrimo = (numero = "") => {
+                if(!numero) return console.warn("Dato no ingresado.");
+                if(!Number.isInteger(numero)) return console.warn("Elnúmero no es entero o es un string.");
+                if(numero === 0 || numero === 1) return console.info(false);
+                for(let i = 2; i < numero; i++){
+                    if(numero % i === 0) return console.info(false);
+                }
+                return console.info(true);
+            }
+            
+            esNumeroPrimo(0);
+            esNumeroPrimo(1);
+            esNumeroPrimo("1");
+            esNumeroPrimo(2);
+            esNumeroPrimo(3);
+            esNumeroPrimo(4);    
+            esNumeroPrimo(5);
+            esNumeroPrimo(6);
+            esNumeroPrimo(7);
+            esNumeroPrimo(11);
+            
+
+            const esParOImpar = (numero = undefined) => {
+                if(!numero) return console.warn("Número no ingresado.");
+                if(typeof(numero) !== "number") return console.error("El dato ingresado no es un número.");
+                if(!Number.isInteger(numero)) return console.error("El número no es entero.");
+                if(numero % 2 === 0) return console.info("El número es par");
+                return console.info("El número es impar");
+            }
+
+            esParOImpar();
+            esParOImpar("2");
+            esParOImpar(2.2);
+            esParOImpar(2);
+            esParOImpar(3);
+
+
+
+
+            const conversorGrados = (grados = undefined, unidad = undefined) => {
+                if(!grados || !unidad) return console.warn("Faltan datos para el cálculo");
+                if(unidad.toLocaleUpperCase() !== "C" && unidad.toLocaleUpperCase() !== "F") return console.error("Unidad de grados ingresada incorrectamente");
+                if(unidad.toLocaleUpperCase() === "C"){
+                    let fahrenheit = (grados * 9/5) + 32;
+                    return console.info(`Los ${grados}°C equivalen a ${fahrenheit}°F.`);
+                }
+                if(unidad.toLocaleUpperCase() === "F"){
+                    let celsius = (grados -32) / (9/5); 
+                    return console.info(`Los ${grados}°F equivalen a ${celsius}°C.`);
+                }
+            }
+
+            conversorGrados();
+            conversorGrados(10, "R");
+            conversorGrados(10, "C");
+            conversorGrados(10, "F");
+        </script>
+    </body>
+</html>
