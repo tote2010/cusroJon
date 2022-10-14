@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            /*
+            15) Programa una función para convertir números de base binaria a decimal y viceversa, 
+            pe. miFuncion(100,2) devolverá 4 base 10.
+            16) Programa una función que devuelva el monto final después de aplicar un descuento 
+            a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
+            17) Programa una función que dada una fecha válida determine cuantos años han pasado 
+            hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
+            */
+
+            const convertirDecimalBinario = (numero = undefined, base = undefined) => {
+                if(!numero || !base) return console.warn("Número o base no ingreado/a(s)");
+                if(typeof(numero) !== "number") return console.error("El número no es un dato numértico");
+                if(typeof(base) !== "number") return console.error("La base no es un dato numértico");
+                if(base === 2){
+                    return console.info(parseInt(numero, base) + " base 10");
+                } else if(base === 10) {
+                    return console.info(numero.toString(2) + " base 2");
+                } else {
+                    return console.info("La base es un tipo de dato invalido para convertir");
+                }
+            }
+            
+            convertirDecimalBinario();
+            convertirDecimalBinario(110);
+            convertirDecimalBinario("", 2);
+            convertirDecimalBinario(100, 2);
+            convertirDecimalBinario(4, 10);
+            
+
+
+
+            const aplicarDescuento = (monto = undefined, descuento = undefined) => {
+                if(!monto || !descuento) return console.warn("Monto y/o decuento no ingresado.");
+                if(typeof(monto) !== "number" || typeof(descuento) !== "number") return console.error("Monto y/o decuento no es un número.");
+                if(Math.sign(monto) === -1 || Math.sign(descuento) === -1) consolo.error("El monto y/o decuento no puede ser negativo");
+                let resto = monto * descuento / 100;
+                return console.info(monto - resto);
+            }
+
+            aplicarDescuento();
+            aplicarDescuento(100, "10");
+            aplicarDescuento(1000, 20);
+            aplicarDescuento(0, 10);
+
+
+
+
+
+            const anoPasados = (fecha = undefined) => {
+                if(!fecha) return console.warn("Fecha no ingresada.");
+                //if(typeof(fecha) !== "")
+                if(!(fecha instanceof Date)) return console.error("El dato ingresado no es de tipo fecha");
+                let now = Date.parse(Date());
+                fecha = Date.parse(fecha);
+                return console.info(Math.floor(((now - fecha) /1000 /3600 /24 /365.25)));
+                //console.log(now);
+                //console.log(new Date().getTime());
+            }
+
+            anoPasados(new Date(1984,4,23));
+            anoPasados(new Date(1980,04,28));
+            anoPasados(new Date(1963,6,13));
+            anoPasados(new Date(1961,01,07));
+
+            
+        </script>
+    </body>
+</html>
