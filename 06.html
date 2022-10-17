@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            /*
+            18) Programa una función que dada una cadena de texto cuente 
+            el número de vocales y consonantes, pe. miFuncion("Hola Mundo") 
+            devuelva Vocales: 4, Consonantes: 5.
+            19) Programa una función que valide que un texto sea un nombre 
+            válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+            20) Programa una función que valide que un texto sea un email 
+            válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero
+            */
+
+            const contarVocalesConstantes = (string = "") => {
+                if(!string) return console.warn("String no ingresada.");
+                if(typeof string !== "string") return console.warn("El valor ingresado no es un string.");
+                
+                let stringMinusculas = string.toLocaleLowerCase();
+
+                let vocales = ['a', 'e', 'i', 'o', 'u'];
+                let constentes = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'ñ', 'p', 'q', 'r', 's', 't', 'v', 'w', 'y', 'z'];
+            
+                let cantidadVocales = 0;
+                let cantidadConsonantes = 0;
+
+                for(let i = 0; i < stringMinusculas.length; i++){
+                    if(vocales.indexOf(stringMinusculas[i]) !== -1) cantidadVocales++;
+                    else if(constentes.indexOf(stringMinusculas[i]) !== -1) cantidadConsonantes++;
+                }
+
+                return console.info(`La cantidad de vocales es: ${cantidadVocales}, y la cantidada de consonantes es: ${cantidadConsonantes}`);
+            }
+            
+            contarVocalesConstantes();
+            contarVocalesConstantes(123);
+            contarVocalesConstantes("Hola Mundo");
+            contarVocalesConstantes("1234 Hola");
+            
+
+
+
+            const validarNombre = (string = "") => {
+                if(!string) return console.warn("Nombre no ingresado.");
+                if(typeof string !== "string") return console.warn("El valor ingresado no es un string.");
+
+                let numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+                let nombreValido = "Nombre válido";
+                let nombreInvalido = "Nombre inválido";
+                
+                for(let i = 0; i < string.length; i++) {
+                    if(numeros.indexOf(string[i]) !== -1) return console.info(nombreInvalido);
+                }
+                return console.info(nombreValido);
+            }
+            
+            validarNombre();
+            validarNombre(123);
+            validarNombre({});
+            validarNombre("Gastón 5 Mascialino");
+            validarNombre("Gastón Diego Mascialino");
+            
+
+
+
+            const validarEmail = (email = "") => {
+                if(!email) return console.warn("Email no ingresado");
+                
+                //email = email.toLocaleLowerCase();
+                //let expReg = /^\w+([\.-]?\w+)*@\w([\.-]?\w+)*(\.\w{2,3,4})+$/;
+                let expReg = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i;
+
+                if(expReg.test(email)){
+                    return console.info("Email válido.");
+                } else {
+                    return console.error("Email inválido.");
+                }    
+            }
+
+            validarEmail();
+            validarEmail("gastonitagpps.com");
+            validarEmail("gaston@itagpps.com");
+            validarEmail("Gaston2@itagpps.com");
+            validarEmail("gaston@itagpps.com.ar");
+        </script>
+    </body>
+</html>

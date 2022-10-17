@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            /*
+            21) Programa una función que dado un array numérico devuelve otro 
+            array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) 
+            devolverá [1, 16, 25].
+            22) Programa una función que dado un array devuelva el número mas alto 
+            y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) 
+            devolverá [99, -60].
+            23) Programa una función que dado un array de números devuelva un 
+            objeto con 2 arreglos en el primero almacena los números pares y 
+            en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá 
+            {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+            */
+
+            const arrayAlcuadrado = (array = []) => {
+
+                let nuevoArray = [];
+
+                if(!array) return console.warn("Array vacío");4
+
+                for(let i = 0; i < array.length; i++){
+                    if(isNaN(array[i])) return console.error("El array contiene al menos un elemento no mumérico.");
+                    nuevoArray.push(Math.pow(array[i], 2));
+                }
+                return console.info(nuevoArray);
+            }
+
+            
+            arrayAlcuadrado([]);
+            arrayAlcuadrado([1, "a", 5]);
+            arrayAlcuadrado([1, 4, 5]);
+            
+
+
+
+
+            const masAltoMasBajo = (array = []) => {
+                
+                if(!array.length) return console.warn("Array vacío");
+                
+                let resultado = [0, 0];
+
+                for(let i = 0; i < array.length; i++){
+                    if(isNaN(array[i])) return console.error("El array contiene al menos un elemento no mumérico.");
+
+                    if(array[i] > resultado[0]) resultado[0] = array[i];
+                    if(array[i] < resultado[1]) resultado[1] = array[i];
+                }
+                return console.info(resultado);
+            }
+            
+            masAltoMasBajo([]);
+            masAltoMasBajo([1, 4, 5, 99, -60]);
+            
+
+
+
+
+            const numerosParesEImpares = (array = []) => {
+                let numerosPares = [];
+                let numerosImpares = [];
+
+                for(let i = 0; i < array.length; i++){
+                    if(isNaN(array[i])) return console.error("El array contiene al menos un elemento no mumérico.");
+                    if(array[i] % 2 === 0){
+                        numerosPares.push(array[i]);
+                    } else {
+                        numerosImpares.push(array[i]);
+                    }
+                }
+                return console.info(`Los números pares son ${numerosPares}, y los impares son ${numerosImpares}.`);
+            }
+
+            numerosParesEImpares([]);
+            numerosParesEImpares(["a",2,3,4,5,6,7,8,9,0]);
+            numerosParesEImpares([1,2,3,4,5,6,7,8,9,0]);
+
+
+
+        </script>
+    </body>
+</html>
