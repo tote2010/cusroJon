@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            /*
+            27) Programa una clase llamada Pelicula.
+
+            La clase recibirá un objeto al momento de instanciarse con los 
+            siguentes datos: id de la película en IMDB, titulo, director, 
+            año de estreno, país o países de origen, géneros y calificación en IMBD.
+            - Todos los datos del objeto son obligatorios.
+            - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+                7 restantes números.
+            - Valida que el título no rebase los 100 caracteres.
+            - Valida que el director no rebase los 50 caracteres.
+                - Valida que el año de estreno sea un número entero de 4 dígitos.
+                - Valida que el país o paises sea introducidos en forma de arreglo.
+                - Valida que los géneros sean introducidos en forma de arreglo.
+                - Valida que los géneros introducidos esten dentro de los géneros 
+                    aceptados*.
+                - Crea un método estático que devuelva los géneros aceptados*.
+                - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+                    decimal de una posición.
+                - Crea un método que devuelva toda la ficha técnica de la película.
+                - Apartir de un arreglo con la información de 3 películas genera 3 
+                instancias de la clase de forma automatizada e imprime la ficha técnica 
+                de cada película.
+
+            * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, 
+            Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, 
+            Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, 
+            Talk-Show, Thriller, War, Western.
+            */
+
+            class Pelicula{
+                constructor({id, titulo, director, anioEstreno, paises, generos, calificacion}){
+                    this.id = id,
+                    this.titulo = titulo,
+                    this.director = director,
+                    this.anioEstreno = anioEstreno,
+                    this.paises = paises,
+                    this.generos = generos,
+                    this.calificacion = calificacion
+
+                    this.validarId(id);
+                    this.validarTitulo(titulo);
+                    this.validarDirector(director);
+                    this.validarAnioEstreno(anioEstreno);
+                    this.validadPaises(paises);
+                } 
+
+                /* Validadores de 
+                varios usos */
+                validarCadena(propiedad, string){
+                    if(!string) return console.warn(`String vacío para ${propiedad}.`);
+                    if(typeof string !== "string") return console.error(`El valor dado para ${propiedad} no ses un string.`);
+                    return true;
+                } 
+
+                validarCantidadCaracteres(propiedad, string, cantidad){
+                    if(string.length > cantidad) return console.error(`El string ${propiedad} supera los ${cantidad} de caracreres: ${string}.`);
+                    return true;
+                }
+                 
+                validarNumero(propiedad, numero){
+                    if(typeof numero !== "number") return console.error(`El valor de ${propiedad} no es numérico. ${numero}.`);
+                    return true;
+                }
+
+                validarArray(propiedad, array){
+                    if(!array) return console.error(`El valor otorgado para ${propiedad} no es un array.`);
+                    if(array.length === 0) return console.error(`El valor otorgado para ${propiedad} es un array vacío.`);
+                    if¿(typeof array !== "array") return console.error((`El valor otorgado para ${propiedad} es un array vacío.`));
+                    return true;
+                }
+
+                /*Validarores de un solo uso */
+                validarId(id){
+                    if(this.validarCadena('IMDB', id));
+                    if(!/^([a-z]{2})([0-9]{7})$/.test(id)) return console.error(`IMDB: ${id} incorrecto. Debe contener los primeros dos caracteres alfanuméricos y los últimos 7 numéricos.`);
+                    return true;
+                }
+
+                validarTitulo(titulo){
+                    if(this.validarCadena("Titulo", titulo));
+                    if(this.validarCantidadCaracteres("Titulo", titulo, 100));
+                    return true;
+                }
+
+                validarDirector(director){
+                    if(this.validarCadena("Director", director));
+                    if(this.validarCantidadCaracteres("Director", director, 50));
+                    return true;
+                }
+
+                validarAnioEstreno(anioEstreno){
+                    if(this.validarNumero("Año de estreno", anioEstreno));
+                    if(!/^([0-9]{4})$/.test(anioEstreno)) return console.error("El año de estreno no es válido, debe contner 4 digitos.");
+                    return true;
+                }
+
+                validadPaises(array){
+                    if(this.validarArray("Paises", array));
+                    return true;
+                }
+            }
+
+            const peli = new Pelicula({
+                id: "tt1234567",
+                titulo: "Blod in blod out",
+                director: "Jhon Bolton",
+                anioEstreno: 1996,
+                paises: ""
+            }
+            );
+        </script>
+    </body>
+</html>
